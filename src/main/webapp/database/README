@@ -1,0 +1,20 @@
++----+-----------------+------------------+------------+----------------------------------+----------+
+| id | name            | email            | phone      | password                         | type     |
++----+-----------------+------------------+------------+----------------------------------+----------+
+|  1 | Searon Maharjan | searon@gmail.com | 9876543210 | 5f4dcc3b5aa765d61d8327deb882cf99 | admin    |
+|  2 | Sushma Rai      | sushma@gmail.com | 9876543210 | 5f4dcc3b5aa765d61d8327deb882cf99 | customer |
+|  3 | Rajesh Sharma   | rajesh@gmail.com | 9876543210 | 5f4dcc3b5aa765d61d8327deb882cf99 | customer |
+|  4 | Anita Tamang    | anita@gmail.com  | 9876543210 | 5f4dcc3b5aa765d61d8327deb882cf99 | customer |
+|  5 | Bikash Thapa    | bikash@gmail.com | 9876543210 | 5f4dcc3b5aa765d61d8327deb882cf99 | customer |
+|  6 | Priya Gurung    | priya@gmail.com  | 9876543210 | 5f4dcc3b5aa765d61d8327deb882cf99 | customer |
++----+-----------------+------------------+------------+----------------------------------+----------+
+
+These are 6 users. timro name ko email chai admin ho aru chai normal users ho.
+
+Admin Login
+Email : searon@gmail.com
+Password : password123
+
+hash gareko vayera password arakai dekha ho.
+
+new account banauda, user jaile type customer nai hunxa.
