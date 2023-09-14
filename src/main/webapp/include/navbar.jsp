@@ -25,7 +25,7 @@
                     <li class="nav-item bor"><a href="account?page=logout" class="nav-link col">Log Out</a></li>
                     </c:if>
                     <c:if test="${empty firstName}">
-                    <li class="nav-item bor"><a href="account?page=account" class="nav-link col">Sign In</a></li>
+                    <li class="nav-item bor"><a href="account?page=gotoSignIn" class="nav-link col">Sign In</a></li>
                     </c:if>
 	            
 	        </ul>

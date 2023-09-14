@@ -76,7 +76,7 @@ public class AccountController extends HttpServlet {
                 out.print("Login : "+user.getId());
             }
             if(user.getType().equalsIgnoreCase("admin")){
-                request.getRequestDispatcher("admin?page=merchView").forward(request,response);
+                request.getRequestDispatcher("admin?page=gotoViewMerch").forward(request,response);
             }
             else{
                 request.getRequestDispatcher("/index.jsp").forward(request,response);

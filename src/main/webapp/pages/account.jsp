@@ -1,8 +1,18 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Sign | In | Up</title>
+      <title>
+          Pixel Plus |&nbsp;
+        <c:if test="${type == 'gotoSignIn'}">
+            Sign In
+        </c:if>
+        <c:if test="${type == 'gotoSignUp'}">
+            Sign Up
+        </c:if>
+          
+      </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/stylex.css">
     <link rel="stylesheet" href="css/stylex.css">
@@ -64,7 +74,7 @@
 
           <form action="account?page=signIn" class="signFormTrunk flex fdc bor" method="post">
             <div class="signFormText">Email</div>
-            <input type="text" class="signFormInput" placeholder="Enter Your Email" value="green@email.com" name="email">
+            <input type="text" class="signFormInput" placeholder="Enter Your Email" value="silver@email.com" name="email">
             <div class="signFormText">Password</div>
             <input type="text" class="signFormInput" placeholder="Enter Your Password" value="password123" name="password">
             <div class="signFormBtnCrate pt25 bor">
@@ -82,6 +92,14 @@
       // var signTitleCrate = document.querySelectorAll(".signTitleCrate");
       var signFormTrunk = document.querySelectorAll(".signFormTrunk");
       var signTitleCrate = document.querySelectorAll(".signTitleCrate");
+      
+    <c:if test="${type == 'gotoSignIn'}">
+        clickSign("in");
+    </c:if>
+    <c:if test="${type == 'gotoSignUp'}">
+        clickSign("up");
+    </c:if>
+        clickSign("in");
       function clickSign(value){
         if(value=="in"){
           console.log("iinnnn");

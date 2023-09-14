@@ -80,6 +80,10 @@ public class AdminController extends HttpServlet {
             m.setQuantity(Integer.parseInt(request.getParameter("quantity")));
             m.setType(request.getParameter("type"));
             m.setGenre(request.getParameter("genre"));
+            m.setFeatured(request.getParameter("featured"));
+            m.setLatest(request.getParameter("latest"));
+            out.print("featured: "+m.getFeatured()+"<br/>");
+            out.print("latest: "+m.getLatest()+"<br/>");
             
             new AdminService().addNewMerch(m);
             request.setAttribute("productAdded", "true");

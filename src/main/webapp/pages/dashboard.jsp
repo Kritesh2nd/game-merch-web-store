@@ -1,3 +1,4 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>Pixel Plus - Dashboard</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -32,7 +33,7 @@
     <div id="wrapper" class="">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion borr" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion bor" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="admin?page=merchView">
@@ -70,9 +71,8 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="buttons.html">Add Products</a>
-                        <a class="collapse-item" href="buttons.html">View Products</a>
-                        <a class="collapse-item" href="cards.html">Edit Products</a>
+                        <a class="collapse-item" href="admin?page=gotoAddMerch">Add Products</a>
+                        <a class="collapse-item" href="admin?page=gotoViewMerch">View Products</a>
                     </div>
                 </div>
             </li>
@@ -114,13 +114,13 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="login.html">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
-                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+                        <a class="collapse-item" href="account?page=gotoSignIn">Login</a>
+                        <a class="collapse-item" href="account?page=gotoSignUp">Register</a>
+<!--                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
                         <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item" href="blank.html">Blank Page</a>
+                        <a class="collapse-item" href="blank.html">Blank Page</a>-->
                     </div>
                 </div>
             </li>
@@ -138,6 +138,11 @@
                     <i class="fas fa-fw fa-table"></i>
                     <span>Tables</span></a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="account?page=logout">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Log Out</span></a>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -154,8 +159,22 @@
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column borr">
-            dsv
+        <div id="content-wrapper" class="d-flex flex-column bor">
+    <%
+    //${merchListSize}
+    %>
+            
+            <c:if test="${jspDash == 'gotoAddMerch'}">
+                <%@include file="../adminPages/addMerch.jsp" %>
+            </c:if>
+            <c:if test="${jspDash == 'gotoViewMerch'}">
+                <%@include file="../adminPages/viewMerch.jsp" %>
+<%--<%@include file="adminPages/viewMerch.jsp" %>--%>
+            </c:if>
+            <c:if test="${jspDash == 'gotoEditMerch'}">
+                <%@include file="../adminPages/editMerch.jsp" %>
+            </c:if>
+
         </div>
         <!-- End of Content Wrapper -->
 
@@ -203,6 +222,13 @@
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
+    
+    <!-- Page level plugins -->
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/demo/datatables-demo.js"></script>
 
 </body>
 
