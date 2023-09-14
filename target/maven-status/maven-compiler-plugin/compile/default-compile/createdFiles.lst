@@ -1,0 +1,12 @@
+Model/ViewMerch.class
+Service/UserService.class
+Controller/AdminController.class
+Service/AdminService.class
+Controller/UserController.class
+Service/AccountService.class
+Controller/AccountController.class
+Model/Basket.class
+Model/User.class
+DBConnection/DBConnection.class
+Model/Merch.class
+Service/Support.class

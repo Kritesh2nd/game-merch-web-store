@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../../GameWebStore3"
+		},
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "GameWebStore4"
+	}
+}
