@@ -9,8 +9,8 @@ public class DBConnection{
         try{
             Class.forName("com.mysql.jdbc.Driver");
             String dbUrl = "jdbc:mysql://localhost:3306/pixel";
-            String dbName = "kritesh";
-            String dbPassword = "kritesh";
+            String dbName = "root";
+            String dbPassword = "";
             con = DriverManager.getConnection(dbUrl, dbName, dbPassword);
             System.out.println("DB connnected");
         }
@@ -34,50 +34,3 @@ public class DBConnection{
         return ps;
     }
 }
-
-/*
-
-sudo systemctl start tomcat9
-
-sudo systemctl stop
-
-sudo systemctl start mysqld
-
-mysql -u kritesh -p
-kritesh
-
-
-==========================================================
-
-drop database pixel;
-
-show databases;
-
-create database pixel;
-
-use pixel;
-
-CREATE TABLE test1 (
-    id int NOT NULL AUTO_INCREMENT,
-    name varchar(255) NOT NULL,
-    email varchar(255),
-    password varchar(255),
-    PRIMARY KEY (id)
-);
-
-select*from test1;
-
-insert into test1 (name,email,password) values
-("apple","apple@email.com","applepass"),
-("ball","ball@email.com","ballpass"),
-("cat","cat@email.com","catpass"),
-("dog","dog@email.com","dogpass"),
-("elk","elk@email.com","elkpass")
-;
-
-select*from test1;
-
-
-
-
-*/

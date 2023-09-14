@@ -21,7 +21,7 @@
                 <c:forEach var="m" items="${merchListFeatured}">
                 <div class="col-md-3 d-flex">
                     <div class="product ftco-animate">
-                        <div class="img d-flex align-items-center justify-content-center" style="background-image: url(images/prod-1.jpg);">
+                        <div class="img d-flex align-items-center justify-content-center" style="background-image: url(images/${m.image});">
                             <div class="desc">
                                 <p class="meta-prod d-flex">
                                     <c:if test="${not empty userData}">

@@ -1,0 +1,147 @@
+drop database pixel;
+show databases;
+create database pixel;
+use pixel1;
+
+CREATE TABLE merch (
+    id int PRIMARY KEY AUTO_INCREMENT,
+    code varchar(10),
+    type varchar(10),
+    title varchar(100),
+    description varchar(255),
+    game varchar(50),
+    genre varchar(20),
+    image varchar(100),
+    featured varchar(10) DEFAULT 'null',
+    latest varchar(10) DEFAULT 'null',
+
+    price int(10),
+    quantity int(10),
+    discount int(10),
+    sold_amount int(10)
+);
+CREATE TABLE user(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    name varchar(100),
+    email varchar(100),
+    phone varchar(100),
+    password varchar(100),
+    type varchar(20)
+);
+CREATE TABLE basket(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    user_id int(10),
+    product_id int(10),
+    quantity int(10),
+    type varchar(20)
+);
+
+insert into user(name,email,password,type,phone) values
+("Searon Maharjan","searon@gmail.com","5f4dcc3b5aa765d61d8327deb882cf99","admin","9876543210"),
+("Sushma Rai","sushma@gmail.com","5f4dcc3b5aa765d61d8327deb882cf99","customer","9876543210"),
+("Rajesh Sharma","rajesh@gmail.com","5f4dcc3b5aa765d61d8327deb882cf99","customer","9876543210"),
+("Anita Tamang","anita@gmail.com","5f4dcc3b5aa765d61d8327deb882cf99","customer","9876543210"),
+("Bikash Thapa","bikash@gmail.com","5f4dcc3b5aa765d61d8327deb882cf99","customer","9876543210"),
+("Priya Gurung","priya@gmail.com","5f4dcc3b5aa765d61d8327deb882cf99","customer","9876543210")
+;
+
+INSERT INTO merch (title, description, game, type, genre, code, image, featured, latest, price, quantity, discount, sold_amount)
+VALUES
+    -- Figures
+    ('Ezio Auditore Figure', 'Collectible Ezio Auditore figure from Assassin\'s Creed II.', 'Assassin\'s Creed II', 'figure', 'Action-Adventure', 'FIG001', 'ezio_figure.jpg', 'No', 'No', 1300, 50, 0.10, 25),
+    ('Master Chief Figure', 'High-quality Master Chief figure from the Halo game series.', 'Halo: Combat Evolved', 'figure', 'First-Person Shooter', 'FIG002', 'master_chief_figure.jpg', 'No', 'No', 2100, 40, 0.10, 30),
+    ('Link Figure', 'Detailed Link figure inspired by The Legend of Zelda series.', 'The Legend of Zelda: Ocarina of Time', 'figure', 'Action-Adventure', 'FIG003', 'link_figure.jpg', 'No', 'No', 2400, 60, 0.05, 20),
+    ('Kratos Statue', 'Impressive Kratos statue based on God of War.', 'God of War (2018)', 'figure', 'Action-Adventure', 'FIG004', 'kratos_statue.jpg', 'No', 'No', 4400, 35, 0.15, 15),
+    ('Mario Figurine', 'Classic Mario figurine from the Super Mario series.', 'Super Mario Bros.', 'figure', 'Platformer', 'FIG005', 'mario_figurine.jpg', 'No', 'No', 1000, 70, 0.05, 40),
+
+    -- Posters
+    ('Witcher 3 Wild Hunt Poster', 'A poster featuring Geralt of Rivia from The Witcher 3.', 'The Witcher 3: Wild Hunt', 'poster', 'Action RPG', 'POS001', 'witcher_poster.jpg', 'No', 'No', 1200, 80, 0.10, 50),
+    ('Cyberpunk 2077 Poster', 'Cyberpunk 2077 poster with futuristic city art.', 'Cyberpunk 2077', 'poster', 'Action RPG', 'POS002', 'cyberpunk2077_poster.jpg', 'No', 'No', 800, 120, 0.05, 70),
+    ('Super Mario Bros. Poster', 'Classic Super Mario Bros. poster featuring Mario and Luigi.', 'Super Mario Bros.', 'poster', 'Platformer', 'POS003', 'mario_poster.jpg', 'No', 'No', 900, 100, 0.05, 60),
+    ('Zelda: Breath of the Wild Poster', 'Artistic poster inspired by The Legend of Zelda: Breath of the Wild.', 'The Legend of Zelda: Breath of the Wild', 'poster', 'Action-Adventure', 'POS004', 'zelda_botw_poster.jpg', 'No', 'No', 1400, 65, 0.10, 35),
+    ('Doom Eternal Poster', 'Doom Eternal poster featuring the Doom Slayer.', 'Doom Eternal', 'poster', 'First-Person Shooter', 'POS005', 'doom_eternal_poster.jpg', 'No', 'No', 1700, 90, 0.05, 55),
+
+    -- T-Shirts
+    ('Overwatch Logo T-Shirt', 'A black T-shirt with the Overwatch logo on the front.', 'Overwatch', 'tshirt', 'First-Person Shooter', 'TS001', 'overwatch_tshirt.jpg', 'No', 'No', 1900, 75, 0.15, 45),
+    ('The Witcher Medallion T-Shirt', 'The Witcher medallion symbol on a comfortable T-shirt.', 'The Witcher 3: Wild Hunt', 'tshirt', 'Action RPG', 'TS002', 'witcher_tshirt.jpg', 'No', 'No', 1700, 85, 0.10, 55),
+    ('Super Mario Bros. T-Shirt', 'Classic Super Mario Bros. T-shirt with pixel art design.', 'Super Mario Bros.', 'tshirt', 'Platformer', 'TS003', 'mario_tshirt.jpg', 'No', 'No', 1400, 95, 0.05, 65),
+    ('Fallout Vault-Tec T-Shirt', 'Vault-Tec logo T-shirt from the Fallout game series.', 'Fallout 4', 'tshirt', 'RPG', 'TS004', 'vault_tec_tshirt.jpg', 'No', 'No', 1300, 70, 0.10, 40),
+    ('Apex Legends Apex Predator T-Shirt', 'Apex Legends T-shirt with the Apex Predator design.', 'Apex Legends', 'tshirt', 'Battle Royale', 'TS005', 'apex_legends_tshirt.jpg', 'No', 'No', 1600, 60, 0.05, 35),
+
+    -- Hats
+    ('Super Mario Cap', 'A red cap with the Super Mario logo embroidered.', 'Super Mario Bros.', 'hat', 'Platformer', 'HAT001', 'mario_hat.jpg', 'No', 'No', 14.99, 60, 0.10, 30),
+    ('Zelda: Breath of the Wild Trucker Hat', 'Trucker hat featuring The Legend of Zelda: Breath of the Wild logo.', 'The Legend of Zelda: Breath of the Wild', 'hat', 'Action-Adventure', 'HAT002', 'zelda_hat.jpg', 'No', 'No', 1200, 70, 0.05, 35),
+    ('Fallout Nuka-Cola Snapback', 'Snapback cap with the Nuka-Cola logo from the Fallout series.', 'Fallout 76', 'hat', 'RPG', 'HAT003', 'nuka_cola_hat.jpg', 'No', 'No', 1500, 55, 0.15, 25),
+    ('Apex Legends Logo Beanie', 'Beanie with the Apex Legends logo for fans of the game.', 'Apex Legends', 'hat', 'Battle Royale', 'HAT004', 'apex_legends_beanie.jpg', 'No', 'No', 1000, 75, 0.10, 45),
+    ('Minecraft Creeper Cap', 'Minecraft Creeper-themed cap for fans of the block-building game.', 'Minecraft', 'hat', 'Sandbox', 'HAT005', 'minecraft_creeper_hat.jpg', 'No', 'No', 1200, 50, 0.05, 20),
+
+    -- Bags
+    ('Minecraft Creeper Backpack', 'A green Creeper-themed backpack for Minecraft fans.', 'Minecraft', 'bag', 'Sandbox', 'BAG001', 'minecraft_bag.jpg', 'No', 'No', 2400, 40, 0.10, 20),
+    ('Assassin\'s Creed Messenger Bag', 'Messenger bag featuring the Assassin\'s Creed logo.', 'Assassin\'s Creed Unity', 'bag', 'Action-Adventure', 'BAG002', 'ac_bag.jpg', 'No', 'No', 2100, 50, 0.05, 30),
+    ('Overwatch Duffle Bag', 'Duffle bag with Overwatch characters and logos.', 'Overwatch', 'bag', 'First-Person Shooter', 'BAG003', 'overwatch_bag.jpg', 'No', 'No', 2900, 35, 0.10, 25),
+    ('Zelda: Breath of the Wild Backpack', 'Backpack featuring artwork from The Legend of Zelda: Breath of the Wild.', 'The Legend of Zelda: Breath of the Wild', 'bag', 'Action-Adventure', 'BAG004', 'zelda_botw_backpack.jpg', 'No', 'No', 2600, 45, 0.05, 35),
+    ('Fallout Vault-Tec Backpack', 'Vault-Tec-themed backpack inspired by the Fallout series.', 'Fallout 4', 'bag', 'RPG', 'BAG005', 'vault_tec_backpack.jpg', 'No', 'No', 2300, 60, 0.10, 40),
+
+    -- Hoodies
+    ('Fallout Vault-Tec Hoodie', 'A warm hoodie featuring the Vault-Tec logo from Fallout.', 'Fallout 76', 'hoodie', 'RPG', 'HD001', 'fallout_hoodie.jpg', 'No', 'No', 3400, 50, 0.20, 35),
+    ('The Witcher Wolf Hoodie', 'Wolf logo hoodie inspired by The Witcher series.', 'The Witcher 3: Wild Hunt', 'hoodie', 'Action RPG', 'HD002', 'witcher_hoodie.jpg', 'No', 'No', 3200, 55, 0.15, 40),
+    ('Overwatch Logo Hoodie', 'Hoodie with the Overwatch logo and characters.', 'Overwatch', 'hoodie', 'First-Person Shooter', 'HD003', 'overwatch_hoodie.jpg', 'No', 'No', 3600, 45, 0.20, 30),
+    ('Cyberpunk 2077 Samurai Hoodie', 'Cyberpunk 2077-themed hoodie with Samurai logo.', 'Cyberpunk 2077', 'hoodie', 'Action RPG', 'HD004', 'cyberpunk2077_hoodie.jpg', 'No', 'No', 3900, 40, 0.10, 25),
+    ('Super Mario Bros. Pixel Hoodie', 'Pixel art Super Mario Bros. hoodie for retro gamers.', 'Super Mario Bros.', 'hoodie', 'Platformer', 'HD005', 'mario_pixel_hoodie.jpg', 'No', 'No', 2900, 60, 0.05, 50)
+;
+
+UPDATE merch SET featured='null',latest='null';
+UPDATE merch SET featured='on' where id>=1 and id <= 3;
+UPDATE merch SET featured='on' where id>=6 and id <= 8;
+UPDATE merch SET featured='on' where id>=11 and id <= 13;
+UPDATE merch SET featured='on' where id>=16 and id <= 18;
+UPDATE merch SET featured='on' where id>=21 and id <= 23;
+UPDATE merch SET featured='on' where id>=26 and id <= 28;
+
+-- Figures
+UPDATE merch SET image = 'figure1.jpeg' where id = 1;
+UPDATE merch SET image = 'figure2.jpeg' where id = 2;
+UPDATE merch SET image = 'figure3.jpeg' where id = 3;
+UPDATE merch SET image = 'figure4.jpeg' where id = 4;
+UPDATE merch SET image = 'figure5.jpeg' where id = 5;
+
+-- Posters
+UPDATE merch SET image = 'poster1.jpeg' where id = 6;
+UPDATE merch SET image = 'poster2.jpeg' where id = 7;
+UPDATE merch SET image = 'poster3.jpeg' where id = 8;
+UPDATE merch SET image = 'poster4.jpeg' where id = 9;
+UPDATE merch SET image = 'poster5.jpeg' where id = 10;
+
+-- T-Shirt
+UPDATE merch SET image = 'tshirt1.jpeg' where id = 11;
+UPDATE merch SET image = 'tshirt2.jpeg' where id = 12;
+UPDATE merch SET image = 'tshirt3.jpeg' where id = 13;
+UPDATE merch SET image = 'tshirt4.jpeg' where id = 14;
+UPDATE merch SET image = 'tshirt5.jpeg' where id = 15;
+
+-- HATS
+UPDATE merch SET image = 'hat1.jpeg' where id = 16;
+UPDATE merch SET image = 'hat2.jpeg' where id = 17;
+UPDATE merch SET image = 'hat3.jpeg' where id = 18;
+UPDATE merch SET image = 'hat4.jpeg' where id = 19;
+UPDATE merch SET image = 'hat5.jpeg' where id = 20;
+
+-- BAGS
+UPDATE merch SET image = 'bag1.jpeg' where id = 21;
+UPDATE merch SET image = 'bag2.jpeg' where id = 22;
+UPDATE merch SET image = 'bag3.jpeg' where id = 23;
+UPDATE merch SET image = 'bag4.jpeg' where id = 24;
+UPDATE merch SET image = 'bag5.jpeg' where id = 25;
+
+-- HOODIE
+UPDATE merch SET image = 'hoodie1.jpeg' where id = 26;
+UPDATE merch SET image = 'hoodie2.jpeg' where id = 27;
+UPDATE merch SET image = 'hoodie3.jpeg' where id = 28;
+UPDATE merch SET image = 'hoodie4.jpeg' where id = 29;
+UPDATE merch SET image = 'hoodie5.jpeg' where id = 30;
+
+select*from merch;
+select id,title,image,type,code,price,featured from merch;
+select*from user;
+
+

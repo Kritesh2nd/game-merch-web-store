@@ -1,5 +1,6 @@
 package Controller;
 import Model.User;
+import Hashing.HashPassword;
 import Service.AccountService;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -46,7 +47,8 @@ public class AccountController extends HttpServlet {
             User user = new User();
             user.setName(request.getParameter("name"));
             user.setEmail(request.getParameter("email"));
-            user.setPassword(request.getParameter("password"));
+            String hashPassword = new HashPassword().hashThisPass(request.getParameter("password"));
+            user.setPassword(hashPassword);
             
             out.println("name: "+user.getName()+"<br/>");
             out.println("email: "+user.getEmail()+"<br/>");
@@ -64,26 +66,32 @@ public class AccountController extends HttpServlet {
             // Taking email & password from user to check in database
             User user = new User();
             user.setEmail(request.getParameter("email"));
-            user.setPassword(request.getParameter("password"));
+            String hashPassword = new HashPassword().hashThisPass(request.getParameter("password"));
+            user.setPassword(hashPassword);
             
+            out.println("id: "+user.getId()+"<br/>");
             out.println("email: "+user.getEmail()+"<br/>");
             out.println("password: "+user.getPassword()+"<br/>");
             // it will only do sign in if email & password is not null
             try{
-            if(user.getEmail()!=null && user.getPassword()!=null){
-                user = new AccountService().loginUser(user);
-                request.setAttribute("userData", user);
-                out.print("Login : "+user.getId());
-            }
-            if(user.getType().equalsIgnoreCase("admin")){
-                request.getRequestDispatcher("admin?page=gotoViewMerch").forward(request,response);
-            }
-            else{
-                request.getRequestDispatcher("/index.jsp").forward(request,response);
-            }
+                if(user.getEmail()!=null && user.getPassword()!=null){
+                    user = new AccountService().loginUser(user);
+                    request.setAttribute("userData", user);
+//                    out.print("Login : "+user.getId());
+                    if(user == null){
+                        request.getRequestDispatcher("account?page=gotoSignIn").forward(request,response);
+                    }
+                    else if(user.getType().equalsIgnoreCase("admin")){
+                        request.getRequestDispatcher("admin?page=gotoViewMerch").forward(request,response);
+                    }
+                    else{
+                        request.getRequestDispatcher("/index.jsp").forward(request,response);
+                    }
+                }
+            
             }
             catch(Exception e){
-                out.print("er: "+e);
+                out.print("errs: "+e);
             }
             
         }

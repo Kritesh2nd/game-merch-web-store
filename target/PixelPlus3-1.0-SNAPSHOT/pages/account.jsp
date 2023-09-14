@@ -10,8 +10,7 @@
         </c:if>
         <c:if test="${type == 'gotoSignUp'}">
             Sign Up
-        </c:if>
-          
+        </c:if>  
       </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/stylex.css">
@@ -62,11 +61,11 @@
 
           <form action="account?page=signUp" class="signFormTrunk flex fdc bor none" method="post">
             <div class="signFormText">Name</div>
-            <input type="text" class="signFormInput" placeholder="Enter Your Name" value="Green Green" name="name">
+            <input type="text" class="signFormInput" placeholder="Enter Your Name" value="" name="name">
             <div class="signFormText">Email</div>
-            <input type="text" class="signFormInput" placeholder="Enter Your Email" value="green@email.com" name="email">
+            <input type="text" class="signFormInput" placeholder="Enter Your Email" value="" name="email">
             <div class="signFormText">Password</div>
-            <input type="text" class="signFormInput" placeholder="Enter Your Password" value="password123" name="password">
+            <input type="password" class="signFormInput" placeholder="Enter Your Password" value="" name="password">
             <div class="signFormBtnCrate pt25 bor">
               <input type="submit" class="signFormSubmitBtn ff1"  value="Sign Up">
             </div>
@@ -74,9 +73,9 @@
 
           <form action="account?page=signIn" class="signFormTrunk flex fdc bor" method="post">
             <div class="signFormText">Email</div>
-            <input type="text" class="signFormInput" placeholder="Enter Your Email" value="silver@email.com" name="email">
+            <input type="text" class="signFormInput" placeholder="Enter Your Email" value="searon@gmail.com" name="email">
             <div class="signFormText">Password</div>
-            <input type="text" class="signFormInput" placeholder="Enter Your Password" value="password123" name="password">
+            <input type="password" class="signFormInput" placeholder="Enter Your Password" value="password123" name="password">
             <div class="signFormBtnCrate pt25 bor">
               <input type="submit" class="signFormSubmitBtn ff1" value="Sign In">
             </div>

@@ -16,12 +16,6 @@ public class AdminService {
         String query = "insert into merch(title,description,game,type,genre,code,image,featured,latest,price,quantity,discount,sold_amount)" 
                 + "values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
         inputMerchNoQuery(query, merch);
-//        System.out.println("Add merch =======================");
-//        System.out.println("title: "+merch.getTitle()+"");
-//        System.out.println("title: "+merch.getPrice()+"");
-//        System.out.println("title: "+merch.getGenre()+"");
-//        System.out.println("title: "+merch.getType()+"");
-
     }
     public void updateMerchById(Merch merch) throws SQLException{
         try{
@@ -110,25 +104,7 @@ public class AdminService {
         String query = "delete from user where id = ?";
         deleteDataNoQuery(query, id);
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+     
     
     
     
@@ -267,12 +243,5 @@ public class AdminService {
             newStr = ch + newStr; //adds each character in front of the existing string
         }
         return newStr;
-    }
-    public static void main(String[] args) {
-        AdminService as = new AdminService();
-        List<Merch> merchList = as.merchList();
-        for(Merch m : merchList){
-            System.out.println(""+m.getId()+", "+m.getTitle()+", "+m.getFeatured()+", "+m.getLatest());
-        }
     }
 }

@@ -74,8 +74,6 @@
         <p class="formtext pb6">Image</p>
         <input type="file" class="" name="file"><br/>
       </div>
-      
-
       <div class="pb15 mtb20">
         <input type="submit" class="formsubmit ptb6 plr30 br4 mr20 cup bgprimary" value="Submit">
         <input type="reset" class="formsubmit ptb6 plr30 br4 mr20 cup bgdanger" value="Reset">

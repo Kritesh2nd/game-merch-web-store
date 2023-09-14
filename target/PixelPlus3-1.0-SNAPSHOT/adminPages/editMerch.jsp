@@ -19,9 +19,16 @@
   </style>
 </head>
 <body>
-  <div class="entry-trunk flex bor">
-    <form class="plr50 pt20 bor" action="admin?page=merchAdd" method="post">
-        <h2>Add Products</h2>
+  <div class="entry-trunk flex borx">
+    <form class="plr50 pt20 bor rel" action="admin?page=merchEdit" method="post">
+        <span style="height:1px;" class="abs hidden">
+            <input type="text" value="${singleMerch.id}" name="id" hidden><br/>
+            <input type="text" value="${singleMerch.code}" name="code" hidden><br/>
+            <input type="text" value="${singleMerch.image}" name="image" hidden><br/>
+            <input type="text" value="${singleMerch.discount}" name="discount" hidden><br/>
+            <input type="text" value="${singleMerch.sold_amount}" name="sold_amount" hidden><br/>
+        </span>
+      <h2>Edit Products</h2>
       <div class="pb15">
         <p class="formtext pb6">Product Title</p>
         <input type="text" class="inputtext" placeholder="Product Title" value="${singleMerch.title}" name="title">
@@ -90,18 +97,14 @@
                 <input type="checkbox" class="formcheckbox borr" name="latest">
             </c:otherwise>
         </c:choose>
-                
       </div>
       <div class="pb15 none">
         <p class="formtext pb6">Image</p>
         <input type="file" class="" name="file"><br/>
       </div>
-      
-
       <div class="pb15 mtb20">
         <input type="submit" class="formsubmit ptb6 plr30 br4 mr20 cup bgprimary" value="Update">
         <a href="admin?page=merchDelete&id=${singleMerch.id}" class="formsubmit ptb10 plr30 br4 mr20 cup bgdanger">Delete</a>
-        
       </div>
     </form>
   </div>

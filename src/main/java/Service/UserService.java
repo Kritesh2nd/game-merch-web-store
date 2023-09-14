@@ -88,62 +88,11 @@ public class UserService {
         }
         return merchList;
     }
-//    public void getCartListByListOfCartIds(List<Basket> cartIdList){
-//        try{
-//        String query="";
-//        System.out.println("getCartListByListOfCartIds");
-//        for(Basket b : cartIdList){
-//            System.out.println(""+b.getProduct_id());
-//            query="select * from basket where user_id = 5 and product_id = 1;";
-//            List<Merch> merchList = merchListNoQuery(query);
-//            System.out.println("0 pos data "+merchList.get(0));
-////            if(merchList!=null){
-////                
-////            }
-//        }
-//        
-//        query="select * from basket where user_id = 5 and type = 'cart';";
-//        List<Basket> basketList = basketListNoQuery(query);
-//        }
-//        catch(Exception e){
-//            System.out.println("Err: "+e);
-//        }
-//    }
-//    
+
     
     
+       
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    public static void main(String[] args) {
-        UserService us = new UserService();
-        us.merchList();
-    } 
     public List<Merch> merchListNoQuery(String query){
         List<Merch> merchList = new ArrayList<>();
         PreparedStatement ps = new DBConnection().getStatement(query);
@@ -208,20 +157,3 @@ public class UserService {
         return basketList;
     }
 }
-
-/*
-//select*from
-
-
-select * from cart as A inner join productinfo as B on A.pid = B.id where A.uid=?
-select * from merch as M inner join cart as C on 
-select title, game, price from basket as B inner join merch as M on B.product_id = M.id where B.type = 'cart' and B.id = 1;
-select M.id, B.id, B.user_id, title, game, price from basket as B inner join merch as M on B.product_id = M.id where B.type = 'cart';
-
-select M.id, B.id, B.user_id, title, game, price from basket as B inner join merch as M on B.product_id = M.id where B.type = 'cart' and B.user_id = 4;
-
-select * from basket as B inner join merch as M on B.product_id = M.id where B.type = 'cart' and B.user_id = 4;
-select * from basket as B inner join merch as M on B.product_id = M.id where B.type = 'cart' and B.user_id = 5;
-
-
-*/

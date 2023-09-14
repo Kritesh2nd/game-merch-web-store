@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Pixel Plus | View Products</title>
+    <title>Pixel Plus | View Users</title>
 
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -256,8 +256,8 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Merchandise List</h1>
-                    <p class="mb-4">This table display the list of merchandise, admin can search, view, update and delete the data.</p>
+                    <h1 class="h3 mb-2 text-gray-800">Customer List</h1>
+                    <p class="mb-4">This table display the list of customers, admin can search, view the data.</p>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -270,12 +270,10 @@
                                     <thead>
                                         <tr>
                                             <th style="color:#7a7a7a;">Id</th>
-                                            <th style="color:#7a7a7a;">Title</th>
+                                            <th style="color:#7a7a7a;">Name</th>
+                                            <th style="color:#7a7a7a;">Email</th>
+                                            <th style="color:#7a7a7a;">Phone</th>
                                             <th style="color:#7a7a7a;">Type</th>
-                                            <th style="color:#7a7a7a;">Game</th>
-                                            <th style="color:#7a7a7a;">Featured</th>
-                                            <th style="color:#7a7a7a;">Sold</th>
-                                            <th style="color:#7a7a7a;">Price</th>
                                             <th style="color:#7a7a7a;">Details</th>
                                         </tr>
                                     </thead>
@@ -283,16 +281,14 @@
                                     <tbody>
 <!-- ============================================================================================================ -->
                                         <!-- for each from here -->
-                                        <c:forEach var="m" items="${merchList}">
+                                        <c:forEach var="c" items="${customerList}">
                                         <tr>
-                                           <td>${m.id}</td>
-                                            <td>${m.title}</td>
-                                            <td>${m.type}</td>
-                                            <td>${m.game}</td>
-                                            <td>${m.featured}</td>
-                                            <td>${m.sold_amount}</td>
-                                            <td>${m.price}</td>
-                                            <td><a href="admin?page=gotoEditMerch&id=${m.id}">Details</a></td>
+                                           <td>${c.id}</td>
+                                            <td>${c.name}</td>
+                                            <td>${c.email}</td>
+                                            <td>${c.phone}</td>
+                                            <td>${c.type}</td>
+                                            <td><a href="#">Details</a></td>
                                         </tr>
                                         </c:forEach>
                                         <!-- for each end here -->

@@ -62,9 +62,9 @@ public class AdminController extends HttpServlet {
         }
         else if(page.equalsIgnoreCase("gotoCustomerView")){
             // [||][customer] side dashboard link [part: order], to get list of order
-            request.setAttribute("jspMainDash", "order");
+            request.setAttribute("jspMainDash", "customer");
             request.setAttribute("jspDash", "gotoCustomerView");
-            request.getRequestDispatcher("admin?page=orderView").forward(request,response);
+            request.getRequestDispatcher("admin?page=customerView").forward(request,response);
         }
 //        Navigation End        
         
@@ -133,7 +133,8 @@ public class AdminController extends HttpServlet {
         }
         else if(page.equalsIgnoreCase("merchEdit")){
             // [inventory], this will take data from update form and update data in db
-            out.print("merch edit<br/>");
+            out.print("merch editxx<br/>");
+            
             Merch m = new Merch();
             
             m.setTitle(request.getParameter("title"));
@@ -168,18 +169,12 @@ public class AdminController extends HttpServlet {
                 new AdminService().updateMerchById(m);
                 System.out.println("data updated");
                 out.print("data updated<br/>");
+                request.getRequestDispatcher("admin?page=gotoViewMerch").forward(request,response);
             }
             catch(SQLException e){
-//                e.printStackTrace();
                 out.print("ERRORR: "+e+"<br/>");
                 System.out.print("ERRORR: "+e);
             }
-            
-            
-            
-            
-            out.print("<a href='admin?page=gotoViewMerch'>go to view merch</a>");
-            
         }
         else if(page.equalsIgnoreCase("merchDelete")){
             // [inventory], this will delete request from user and delete data from db
