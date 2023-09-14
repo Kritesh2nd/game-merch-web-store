@@ -82,6 +82,7 @@ public class AdminController extends HttpServlet {
             m.setGenre(request.getParameter("genre"));
             m.setFeatured(request.getParameter("featured"));
             m.setLatest(request.getParameter("latest"));
+            m.setImage("poster6.jpeg");
             out.print("featured: "+m.getFeatured()+"<br/>");
             out.print("latest: "+m.getLatest()+"<br/>");
             

@@ -1,7 +1,7 @@
 drop database pixel;
 show databases;
 create database pixel;
-use pixel1;
+use pixel;
 
 CREATE TABLE merch (
     id int PRIMARY KEY AUTO_INCREMENT,
