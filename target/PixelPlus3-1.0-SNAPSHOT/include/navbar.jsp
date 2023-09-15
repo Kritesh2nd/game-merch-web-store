@@ -10,7 +10,7 @@
 	    <div class="container">
 	        <a class="navbar-brand" href="user?page=index">Pixel <span>Plus</span></a>
 	        <div class="order-lg-last btn-group">
-                <a href="user?page=gotoCart" class="btn-cart dropdown-toggle dropdown-toggle-split borx">
+                <a href="user?page=gotoCart" class="btn-cart dropdown-toggle dropdown-toggle-split bor">
           	        <span class="flaticon-shopping-bag"></span>
           	        <div class="d-flex justify-content-center align-items-center">
                             <c:if test="${not empty sessCartSize}">
