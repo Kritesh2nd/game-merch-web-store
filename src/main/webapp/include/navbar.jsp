@@ -10,10 +10,18 @@
 	    <div class="container">
 	        <a class="navbar-brand" href="user?page=index">Pixel <span>Plus</span></a>
 	        <div class="order-lg-last btn-group">
-                <a href="#" class="btn-cart dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a href="user?page=gotoCart" class="btn-cart dropdown-toggle dropdown-toggle-split borx">
           	        <span class="flaticon-shopping-bag"></span>
-          	        <div class="d-flex justify-content-center align-items-center"><small>3</small></div>
+          	        <div class="d-flex justify-content-center align-items-center">
+                            <c:if test="${not empty sessCartSize}">
+                                <small>${sessCartSize}</small>
+                            </c:if>
+                            <c:if test="${empty sessCartSize}">
+                                 <small>0</small>
+                            </c:if>
+                        </div>
                 </a>
+                        
             </div>
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">

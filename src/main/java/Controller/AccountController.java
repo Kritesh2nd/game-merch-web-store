@@ -1,7 +1,9 @@
 package Controller;
 import Model.User;
 import Hashing.HashPassword;
+import Model.Merch;
 import Service.AccountService;
+import Service.UserService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -83,8 +85,17 @@ public class AccountController extends HttpServlet {
                     }
                     else if(user.getType().equalsIgnoreCase("admin")){
                         request.getRequestDispatcher("admin?page=gotoViewMerch").forward(request,response);
+                        HttpSession sess = request.getSession();
+                        sess.setAttribute("sessUserData",user);
                     }
                     else{
+                        List<Merch> basketCartList = new UserService().getCartListByUserId(user.getId());
+                        out.print("basketList size:"+basketCartList.size()+"<br/>");
+                        HttpSession sess1 = request.getSession();
+                        sess1.setAttribute("sessCartSize",basketCartList.size());
+                        
+                        HttpSession sess = request.getSession();
+                        sess.setAttribute("sessUserData",user);
                         request.getRequestDispatcher("/index.jsp").forward(request,response);
                     }
                 }
@@ -97,8 +108,15 @@ public class AccountController extends HttpServlet {
         }
         else if(page.equalsIgnoreCase("logout")){
             try{
-//            HttpSession sess = request.getSession(false);
-//            sess.invalidate();
+            HttpSession sess1 = request.getSession(false);
+            sess1.removeAttribute("sessCartSize");
+            
+            HttpSession sess2 = request.getSession(false);
+            sess2.removeAttribute("sessCartData");
+            
+            HttpSession sess = request.getSession(false);
+            sess.removeAttribute("sessUserData");
+            
             request.setAttribute("userData", null);
             RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request,response);

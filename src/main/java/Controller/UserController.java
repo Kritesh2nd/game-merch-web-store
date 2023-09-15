@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 @WebServlet(name = "UserController", urlPatterns = {"/user"})
@@ -38,12 +39,42 @@ public class UserController extends HttpServlet {
                 
                 out.print("basketList size:"+basketCartList.size()+"<br/>");
                 request.setAttribute("zz: ", basketCartList);
+                
                 for(Merch m:basketCartList){
                     out.print(m.getId()+" "+m.getTitle()+" "+m.getGenre()+" "+m.getPrice()+" "+m.getFeatured()+"<br/>" );
                 }
 //                request.getRequestDispatcher("pages/cart.jsp").forward(request,response);
             }
             out.print("this is cart, basketCartList size");
+        }
+        else if(page.equalsIgnoreCase("gotoCart")){
+            HttpSession sess1 = request.getSession();
+            User user = (User) sess1.getAttribute("sessUserData");
+            if(user==null){
+                request.getRequestDispatcher("user?page=index").forward(request,response);
+            }
+            else{
+                out.print("user: "+user.getId());
+                List<Merch> basketCartList = new UserService().getCartListByUserId(user.getId());
+                
+                out.print("basketList size:"+basketCartList.size()+"<br/>");
+                
+                HttpSession sess2 = request.getSession();
+                sess2.setAttribute("sessCartList",basketCartList);
+                
+                HttpSession sess3 = request.getSession();
+                sess3.setAttribute("sessCartSize",basketCartList.size()); 
+                
+                request.setAttribute("CartList: ", basketCartList);
+                request.setAttribute("CartSize: ", basketCartList.size());
+                
+                for(Merch m:basketCartList){
+                    out.print(m.getId()+" "+m.getTitle()+" "+m.getGenre()+" "+m.getPrice()+" "+m.getFeatured()+"<br/>" );
+                }
+                request.getRequestDispatcher("pages/cart.jsp").forward(request,response);
+            }
+            
+            
         }
         else if(page.equalsIgnoreCase("purchased")){
             
@@ -89,24 +120,31 @@ public class UserController extends HttpServlet {
         //addToCart
         else if(page.equalsIgnoreCase("addToCart")){
             try{
-            String id = request.getParameter("id");
-            String uid = request.getParameter("uid");
-            if(id!=null && uid!=null){
-                Basket basket = new Basket();
-                basket.setUser_id(Integer.parseInt(uid));
-                basket.setProduct_id(Integer.parseInt(id));
-                basket.setQuantity(1);
-                basket.setType("cart");
-                new UserService().addNewBasket(basket);
-            
-            out.print("Product added to the cart");
-            }
-            else{
-                out.print("NO USER<br/>");
-            }
-            
-            }
-            catch(Exception e){
+                String id = request.getParameter("id");
+                String uid = request.getParameter("uid");
+                if(id!=null && uid!=null){
+                    Basket basket = new Basket();
+                    basket.setUser_id(Integer.parseInt(uid));
+                    basket.setProduct_id(Integer.parseInt(id));
+                    basket.setQuantity(1);
+                    basket.setType("cart");
+                    new UserService().addNewBasket(basket);
+                    
+                    out.print("Product added to the cart");
+                    
+                    List<Merch> basketCartList = new UserService().getCartListByUserId(Integer.parseInt(uid));
+                    out.print("basketList size:"+basketCartList.size()+"<br/>");
+                    HttpSession sess1 = request.getSession();
+                    sess1.setAttribute("sessCartSize",basketCartList.size());
+                    HttpSession sess2 = request.getSession();
+                    sess2.setAttribute("sessCartList",basketCartList);
+                    
+                    request.getRequestDispatcher("./index.jsp").forward(request,response);
+                }
+                else{
+                    out.print("NO USER<br/>");
+                }
+            }catch(Exception e){
                 out.print("ERR_ADD_TO_CART: "+e);
             }
         }

@@ -24,8 +24,9 @@
                         <div class="img d-flex align-items-center justify-content-center" style="background-image: url(images/${m.image});">
                             <div class="desc">
                                 <p class="meta-prod d-flex">
+<%//user?page=addToWishlist&uid=${userData.id}&id=${m.id}%>                                    
                                     <c:if test="${not empty userData}">
-                                    <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
+                                    <a href="user?page=addToCart&uid=${userData.id}&id=${m.id}" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
                                     <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a>
                                     </c:if>
                                     <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>

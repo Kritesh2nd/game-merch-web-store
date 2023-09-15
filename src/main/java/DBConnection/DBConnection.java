@@ -9,8 +9,10 @@ public class DBConnection{
         try{
             Class.forName("com.mysql.jdbc.Driver");
             String dbUrl = "jdbc:mysql://localhost:3306/pixel";
-            String dbName = "root";
-            String dbPassword = "";
+//            String dbName = "root";
+//            String dbPassword = "";
+            String dbName = "kritesh";
+            String dbPassword = "kritesh";
             con = DriverManager.getConnection(dbUrl, dbName, dbPassword);
             System.out.println("DB connnected");
         }

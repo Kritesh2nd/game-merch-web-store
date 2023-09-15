@@ -17,7 +17,7 @@ request.setAttribute("merchListFeatured", merchListFeatured);
 <%
 String firstName="";
 String userType="Customer";
-User user = (User) request.getAttribute("userData");
+User user = (User) session.getAttribute("sessUserData");
 if(user!=null){firstName = new Support().getFirstName(user.getName());userType = user.getType();}
 request.setAttribute("userData",user);
 request.setAttribute("firstName",firstName);
