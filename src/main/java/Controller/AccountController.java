@@ -3,6 +3,7 @@ import Model.User;
 import Hashing.HashPassword;
 import Model.Merch;
 import Service.AccountService;
+import Service.Support;
 import Service.UserService;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -84,9 +85,13 @@ public class AccountController extends HttpServlet {
                         request.getRequestDispatcher("account?page=gotoSignIn").forward(request,response);
                     }
                     else if(user.getType().equalsIgnoreCase("admin")){
-                        request.getRequestDispatcher("admin?page=gotoViewMerch").forward(request,response);
+                        String firstName = new Support().getFirstName(user.getName());
+                                               
                         HttpSession sess = request.getSession();
                         sess.setAttribute("sessUserData",user);
+                        sess.setAttribute("sessFirstName",firstName);
+                        
+                        request.getRequestDispatcher("admin?page=gotoViewMerch").forward(request,response);
                     }
                     else{
                         List<Merch> basketCartList = new UserService().getCartListByUserId(user.getId());
@@ -116,6 +121,7 @@ public class AccountController extends HttpServlet {
             
             HttpSession sess = request.getSession(false);
             sess.removeAttribute("sessUserData");
+            sess.removeAttribute("sessFirstName");
             
             request.setAttribute("userData", null);
             RequestDispatcher rd = request.getRequestDispatcher("index.jsp");

@@ -24,8 +24,7 @@
 	<link rel="stylesheet" href="css/stylex.css">
   </head>
   <body>
-
-  	
+    <%@include file="../include/navbar.jsp" %>
     <!-- END nav -->
     
     <section class="hero-wrap hero-wrap-2" style="background-image: url('images/game_bg2.jpg');" data-stellar-background-ratio="0.5">
